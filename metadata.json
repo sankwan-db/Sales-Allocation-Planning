@@ -1,0 +1,8 @@
+{
+  "name": "Sales Allocation & Planning System",
+  "description": "Sales Allocation, Planning & Execution Management System",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}

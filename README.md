@@ -1,33 +1,26 @@
 # SAPE — Sales Allocation, Planning & Execution Management System
 
-เว็บแอปพลิเคชันสำหรับวางแผนไก่เข้าโรงงาน คำนวณ Supply/Yield เปรียบเทียบ Demand–Supply จัดสรรการขาย และส่งต่อเป้าหมายสู่ Sales Execution
+Enterprise prototype สำหรับการวางแผน Supply, Demand-Supply Balance, Sales Allocation, Sales Execution และ ERP SO workflow.
 
-## Phase 1 scope
+## Patch V1.3
 
-- Executive Dashboard และ Planning Alerts
-- Chicken Intake Plan รองรับ Chicken Type/Breed และ Revision
-- Supply & Yield calculation view
-- Demand–Supply Balance
-- Allocation by Sales Channel พร้อม Over-allocation control
-- Sales Action Pipeline
-- โครงเมนู Quotation, Contract, Oracle R12 SO Interface, KPI และ Master Data
+- แก้ Report Center ที่บางรายงานแสดงหน้าว่าง
+- เพิ่มรายงาน Yield พร้อม KPI, Yield comparison, trend, calculation flow และ detail drill-down
+- เพิ่ม Demand-Supply Report พร้อมสูตร Available Supply / Requirement / Balance / Status
+- เพิ่ม Allocation Report พร้อม Allocation → SO → Pipeline → Gap และ drill-down ระดับฝ่ายขาย
+- เพิ่ม report data สำหรับ Stock at Risk, Forecast Accuracy และ Variance เพื่อป้องกัน dead report
+- ทำ Filter แบบ context-aware: Yield ไม่แสดง Sales Team; Allocation แสดง Channel/Team/Salesperson
+- เพิ่ม Chicken Type / Breed filtering รองรับ Broiler, Layer, PS และข้อมูลใหม่จาก Master
+- เชื่อม mock flow Chicken Intake → Yield → Demand-Supply → Allocation → SO → Delivery
+- Export Excel และ Export PDF สามารถทำงานจาก Report Center
+- เพิ่ม Error / No Data fallback เพื่อไม่ให้แสดง blank report body
 
 ## Run locally
 
-```bash
-npm install
-npm run dev
-```
+1. `npm install`
+2. `npm run dev`
 
-เปิด `http://localhost:3000`
+Build / type-check:
 
-## Verify
-
-```bash
-npm run lint
-npm run build
-```
-
-## Architecture direction
-
-Oracle R12 จะเป็น Source of Truth สำหรับ Product, Customer, Sales Order และ Actual Sales ส่วน SAPE ดูแล Planning, Yield, Allocation, CRM, Quotation, Contract และ KPI เอกสารที่อนุมัติแล้วต้องสร้าง Revision ใหม่เมื่อแก้ไขและไม่เขียนทับประวัติเดิม
+- `npm run build`
+- `npm run lint`
